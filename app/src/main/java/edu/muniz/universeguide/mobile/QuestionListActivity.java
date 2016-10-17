@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -69,6 +70,8 @@ public class QuestionListActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setLogo(R.drawable.ic_launcher);
+            actionBar.setDisplayUseLogoEnabled(true);
         }
 
         new SearchTask().execute();
@@ -94,6 +97,13 @@ public class QuestionListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
+			
+			if (position % 2 == 1) {
+				holder.mView.setBackgroundColor(Color.WHITE);
+			} else {
+				holder.mView.setBackgroundColor(Color.CYAN);
+			}
+			
             Map question = mValues.get(position);
             holder.mItem = question;
             holder.mIdView.setText(question.get("number").toString());

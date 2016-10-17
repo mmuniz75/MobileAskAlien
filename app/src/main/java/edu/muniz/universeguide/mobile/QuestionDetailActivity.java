@@ -26,6 +26,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_question_detail);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
@@ -49,6 +50,8 @@ public class QuestionDetailActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setLogo(R.drawable.ic_launcher);
+            actionBar.setDisplayUseLogoEnabled(true);
         }
 
         // savedInstanceState is non-null when there is fragment state

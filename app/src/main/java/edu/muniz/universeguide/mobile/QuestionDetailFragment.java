@@ -113,7 +113,7 @@ public class QuestionDetailFragment extends Fragment {
                 Activity activity = instance.getActivity();
                 CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
                 if (appBarLayout != null) {
-                    appBarLayout.setTitle(answerMap.get("question"));
+                    appBarLayout.setTitle("Question " + answerMap.get("number"));
                 }
 
                 String formatedContent = Html.fromHtml(answerMap.get("content")).toString();

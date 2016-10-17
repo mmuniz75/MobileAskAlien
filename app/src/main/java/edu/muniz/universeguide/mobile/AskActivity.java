@@ -20,6 +20,9 @@ public class AskActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
 
         if(isNetworkAvailable()){
+			getSupportActionBar().setDisplayShowHomeEnabled(true);
+			getSupportActionBar().setLogo(R.drawable.ic_launcher);
+			getSupportActionBar().setDisplayUseLogoEnabled(true);
             setContentView(R.layout.activity_ask);
         }else{
             String mensagem = getString(R.string.msg_no_connection);

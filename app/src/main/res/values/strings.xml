@@ -5,11 +5,7 @@
     <string name="search_button">Search</string>
     <string name="question_hint">Type here your question</string>
     <string name="title_activity_questions">Questions</string>
-    <string name="question_number">219</string>
-    <string name="title_activity_answer">Answer</string>
-    <string name="question_spliter">-</string>
-    <string name="question">What are the crystal skulls, found in several places on the planet?</string>
-    <string name="title_activity_feed_back">Feed Back</string>
+    <string name="title_activity_feed_back">Leave your feed Back</string>
     <string name="feedback_name">Name (optional)</string>
     <string name="feedback_button">Leave your feed back</string>
     <string name="feedback_email">Email (optional)</string>
@@ -19,12 +15,13 @@
     <string name="feedback_message_error">Not able to sent the feed back, please try again</string>
     <string name="back_button">Question again</string>
     <string name="cancel">Cancel</string>
+    <string name="question">Question</string>
 
     <string name="msg_no_connection">This application just works with internet access enable.</string>
     <string name="msg_no_question">Please ask a question.</string>
     <string name="msg_no_feedback">You need at least a feed back to send.</string>
     <string name="msg_no_results">No results found.</string>
-    <string name="title_question_list">Questions</string>
+    <string name="title_question_list">Choose a question</string>
     <string name="title_question_detail">Question Detail</string>
 
 </resources>
