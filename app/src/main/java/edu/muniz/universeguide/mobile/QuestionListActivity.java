@@ -36,6 +36,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import static android.graphics.Color.CYAN;
+import static android.os.Build.VERSION_CODES.N;
+
 /**
  * An activity representing a list of Questions. This activity
  * has different presentations for handset and tablet-size devices. On
@@ -101,7 +104,7 @@ public class QuestionListActivity extends AppCompatActivity {
 			if (position % 2 == 1) {
 				holder.mView.setBackgroundColor(Color.WHITE);
 			} else {
-				holder.mView.setBackgroundColor(Color.CYAN);
+				holder.mView.setBackgroundColor(Color.parseColor("#cce4ff"));
 			}
 			
             Map question = mValues.get(position);

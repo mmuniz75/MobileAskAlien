@@ -8,10 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
-import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-import static edu.muniz.universeguide.mobile.R.id.fab;
 
 /**
  * An activity representing a single Question detail screen. This
@@ -34,14 +33,25 @@ public class QuestionDetailActivity extends AppCompatActivity {
 
         instance = this;
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fabFeedBack = (FloatingActionButton) findViewById(R.id.fabFeedBack);
+        fabFeedBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Integer questionId = getIntent().getIntExtra(Constants.QUESTION_ID,0);;
                 Intent intent = new Intent(instance, FeedBackActivity.class);
                 intent.putExtra(Constants.QUESTION_ID, questionId);
                 startActivity(intent);
+
+            }
+        });
+
+        FloatingActionButton fabQuestion = (FloatingActionButton) findViewById(R.id.fabQuestion);
+        fabQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String questionLabel = getIntent().getStringExtra(Constants.QUESTION);
+                Snackbar.make(view, questionLabel, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
 
             }
         });
