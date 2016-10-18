@@ -23,7 +23,7 @@ public class FeedBackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         questionId = getIntent().getIntExtra(Constants.QUESTION_ID,0);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);

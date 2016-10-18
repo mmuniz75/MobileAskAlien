@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -77,16 +78,6 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/feedback_send"
                 android:onClick="sendFeedback"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/cancel_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/cancel"
-                android:onClick="cancel"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -1,16 +1,18 @@
 package edu.muniz.universeguide.mobile;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-import android.widget.TextView;
 
+import android.content.DialogInterface.OnClickListener;
 
 /**
  * An activity representing a single Question detail screen. This
@@ -20,6 +22,7 @@ import android.widget.TextView;
  */
 public class QuestionDetailActivity extends AppCompatActivity {
 
+    private AlertDialog dialog;
 
     private QuestionDetailActivity instance;
     @Override
@@ -50,8 +53,16 @@ public class QuestionDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String questionLabel = getIntent().getStringExtra(Constants.QUESTION);
-                Snackbar.make(view, questionLabel, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(instance);
+                builder.setMessage(questionLabel);
+                builder.setPositiveButton(getString(R.string.ok),  new OnClickListener() {
+                                                                        public void onClick(DialogInterface dialog, int which) {
+                                                                            dialog.dismiss();
+                                                                        }
+                                                                    });
+                dialog = builder.create();
+                dialog.show();
 
             }
         });
@@ -97,4 +108,6 @@ public class QuestionDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
