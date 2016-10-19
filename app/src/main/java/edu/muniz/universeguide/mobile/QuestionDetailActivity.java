@@ -97,6 +97,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
                     .add(R.id.question_detail_container, fragment)
                     .commit();
         }
+
     }
 
     @Override

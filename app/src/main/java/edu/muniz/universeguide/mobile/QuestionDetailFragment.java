@@ -120,6 +120,8 @@ public class QuestionDetailFragment extends Fragment {
                 String formatedContent = Html.fromHtml(answerMap.get("content")).toString();
                 ((TextView) rootView.findViewById(R.id.question_detail)).setText(formatedContent);
 
+                ((TextView) rootView.findViewById(R.id.question_date)).setText(answerMap.get("date"));
+
             }
             dialog.dismiss();
         }
