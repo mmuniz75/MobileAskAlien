@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,14 +34,33 @@ public class FeedBackActivity extends AppCompatActivity {
     }
 
     public void sendFeedback(View view) {
+        boolean cancel = false;
+        View focusView = null;
 
-        EditText editText = (EditText)findViewById(R.id.commentsText);
-        String comments = editText.getText().toString();
+        EditText commmentText = (EditText)findViewById(R.id.commentsText);
+        EditText emailText = (EditText)findViewById(R.id.emailText);
 
-        if(comments.length()==0){
-            String mensagem = getString(R.string.msg_no_feedback);
-            Toast toast = Toast.makeText(this, mensagem, Toast.LENGTH_SHORT);
-            toast.show();
+        emailText.setError(null);
+        commmentText.setError(null);
+
+        String email = emailText.getText().toString();
+
+        if (!TextUtils.isEmpty(email) && !isEmailValid(email)) {
+            emailText.setError(getString(R.string.error_invalid_email));
+            focusView = emailText;
+            cancel = true;
+        }
+
+        String comments = commmentText.getText().toString();
+
+        if (TextUtils.isEmpty(comments)) {
+            commmentText.setError(getString(R.string.msg_no_feedback));
+            focusView = commmentText;
+            cancel = true;
+        }
+
+        if(cancel){
+            focusView.requestFocus();
         } else {
             new FeedBackTask().execute();
             String mensagem = getString(R.string.feedback_message);
@@ -96,6 +116,11 @@ public class FeedBackActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean isEmailValid(String email) {
+        //TODO: Replace this with your own logic
+        return email.contains("@");
     }
 }
 

@@ -17,8 +17,8 @@
     <string name="cancel">Cancel</string>
     <string name="question">Question</string>
     <string name="ok">OK</string>
-
-
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="searching">Searching</string>
     <string name="msg_no_connection">This application just works with internet access enable.</string>
     <string name="msg_no_question">Please ask a question.</string>
     <string name="msg_no_feedback">You need at least a feed back to send.</string>

@@ -168,7 +168,7 @@ public class QuestionListActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             dialog = new ProgressDialog(QuestionListActivity.this);
-            dialog.setMessage("Wait");
+            dialog.setMessage(getString(R.string.searching));
             dialog.show();
         }
 

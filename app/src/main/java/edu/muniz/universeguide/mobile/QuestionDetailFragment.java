@@ -93,10 +93,11 @@ public class QuestionDetailFragment extends Fragment {
                 String number = questionObject.getString("number");
                 String question = questionObject.getString("question");
                 String content = questionObject.getString("content");
+                String date = questionObject.getString("date");
                 questionId = questionObject.getInt("questionId");
                 getActivity().getIntent().putExtra(Constants.QUESTION_ID, questionId);
 
-                answer[0] = number + Constants.FIELDS_SPLITER + question + Constants.FIELDS_SPLITER + content;
+                answer[0] = number + Constants.FIELDS_SPLITER + question + Constants.FIELDS_SPLITER + content + Constants.FIELDS_SPLITER + date;
                 return answer;
 
             } catch (Exception e) {
@@ -113,7 +114,7 @@ public class QuestionDetailFragment extends Fragment {
                 Activity activity = instance.getActivity();
                 CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
                 if (appBarLayout != null) {
-                    appBarLayout.setTitle("Question " + answerMap.get("number"));
+                    appBarLayout.setTitle(getString(R.string.question) + " " + answerMap.get("number"));
                 }
 
                 String formatedContent = Html.fromHtml(answerMap.get("content")).toString();
@@ -130,6 +131,7 @@ public class QuestionDetailFragment extends Fragment {
             question.put("number", token.nextToken());
             question.put("question", token.nextToken());
             question.put("content", token.nextToken());
+            question.put("date", token.nextToken());
 
             return question;
         }
