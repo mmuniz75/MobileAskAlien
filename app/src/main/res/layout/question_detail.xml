@@ -14,18 +14,16 @@
         android:textIsSelectable="true"
     />
 
-    <TextView android:id="@+id/question_date"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="-50dp"
-        style="?android:attr/textAppearanceSmallPopupMenu"
-        android:text="25/08/1975"
-        android:padding="16dp"
-        android:textIsSelectable="true"
-        android:textStyle="italic"
-        />
+      <TextView android:id="@+id/question_date"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          style="?android:attr/textAppearanceSmallPopupMenu"
+          android:padding="16dp"
+          android:textStyle="italic"
+          />
 
-</LinearLayout>
+
+  </LinearLayout>
 
 
 

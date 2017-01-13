@@ -115,7 +115,7 @@ public class QuestionListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String ask = getIntent().getStringExtra(Constants.ASK);
+                    String ask = getIntent().getStringExtra(Constants.ASK)  + " (*)";
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
                         arguments.putString(Constants.QUESTION, ask);
