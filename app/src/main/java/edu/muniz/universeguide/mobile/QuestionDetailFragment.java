@@ -78,7 +78,7 @@ public class QuestionDetailFragment extends Fragment {
 
                 String url = "http://" + Constants.SERVER +"/rest/answer/detail";
 
-                String search = getArguments().getString(Constants.QUESTION);
+                String search = getArguments().getString(Constants.ASK);
                 String id = getArguments().getString(Constants.ANSWER_ID);
 
                 HttpRequest request = HttpRequest.get(url, true, "search", search,"id",id);

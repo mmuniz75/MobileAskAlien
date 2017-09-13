@@ -118,7 +118,8 @@ public class QuestionListActivity extends AppCompatActivity {
                     String ask = getIntent().getStringExtra(Constants.ASK)  + " (*)";
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(Constants.QUESTION, ask);
+                        arguments.putString(Constants.ASK, ask);
+                        arguments.putString(Constants.QUESTION, holder.mItem.get("question").toString());
                         arguments.putString(Constants.ANSWER_ID, holder.mItem.get("number").toString());
 
                         QuestionDetailFragment fragment = new QuestionDetailFragment();
@@ -129,7 +130,8 @@ public class QuestionListActivity extends AppCompatActivity {
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, QuestionDetailActivity.class);
-                        intent.putExtra(Constants.QUESTION, ask);
+                        intent.putExtra(Constants.ASK, ask);
+                        intent.putExtra(Constants.QUESTION, holder.mItem.get("question").toString());
                         intent.putExtra(Constants.ANSWER_ID, holder.mItem.get("number").toString());
                         context.startActivity(intent);
                     }

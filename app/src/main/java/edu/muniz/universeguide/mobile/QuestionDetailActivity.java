@@ -90,6 +90,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
             Bundle arguments = new Bundle();
             arguments.putString(Constants.QUESTION, getIntent().getStringExtra(Constants.QUESTION));
             arguments.putString(Constants.ANSWER_ID, getIntent().getStringExtra(Constants.ANSWER_ID));
+            arguments.putString(Constants.ASK, getIntent().getStringExtra(Constants.ASK));
 
             QuestionDetailFragment fragment = new QuestionDetailFragment();
             fragment.setArguments(arguments);

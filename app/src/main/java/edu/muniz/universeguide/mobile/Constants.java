@@ -4,7 +4,7 @@ public class Constants {
 	
 	public static final String ASK = "ask";
 	//public static final String SERVER = "192.168.1.7:8080/mythidb";
-	public static final String SERVER = "mythidb-askalien.rhcloud.com";
+	public static final String SERVER = "mythidb-askalien.a3c1.starter-us-west-1.openshiftapps.com";
 	
 	public static final String QUESTION = "question";
 	public static final String ANSWER_ID = "answer_id";
