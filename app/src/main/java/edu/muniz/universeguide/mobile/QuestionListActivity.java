@@ -1,21 +1,15 @@
 package edu.muniz.universeguide.mobile;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -23,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.github.kevinsawicki.http.HttpRequest;
 
@@ -35,9 +28,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
-
-import static android.graphics.Color.CYAN;
-import static android.os.Build.VERSION_CODES.N;
 
 /**
  * An activity representing a list of Questions. This activity
@@ -180,15 +170,13 @@ public class QuestionListActivity extends AppCompatActivity {
             try {
 
                 String ask = getIntent().getStringExtra(Constants.ASK);
-                String url = "http://" + Constants.SERVER +"/rest/question/ask";
+                String url = "http://" + Constants.SERVER +"/ask";
 
                 HttpRequest request = HttpRequest.get(url, true, "question", ask);
 
                 String conteudo = request.body();
 
-                JSONObject jsonObject = new JSONObject(conteudo);
-
-                JSONArray resultados = jsonObject.getJSONArray("questions");
+                JSONArray resultados =  new JSONArray(conteudo);
 
                 String[] questions = new String[resultados.length()];
 

@@ -1,10 +1,9 @@
 package edu.muniz.universeguide.mobile;
 
 
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -12,9 +11,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.github.kevinsawicki.http.HttpRequest;
-import java.util.HashMap;
-import java.util.Map;
+import org.json.JSONObject;
+
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class FeedBackActivity extends AppCompatActivity {
 
@@ -80,7 +81,7 @@ public class FeedBackActivity extends AppCompatActivity {
         protected String[] doInBackground(String... params) {
             try {
 
-                String url = "http://" + Constants.SERVER +"/rest/question/feedback";
+                String urlPath = "http://" + Constants.SERVER +"/feedback";
 
                 EditText editText = (EditText)findViewById(R.id.nameText);
                 String name = editText.getText().toString();
@@ -91,14 +92,30 @@ public class FeedBackActivity extends AppCompatActivity {
                 editText = (EditText)findViewById(R.id.commentsText);
                 String comments = editText.getText().toString();
 
-                Map<String, String> data = new HashMap<String, String>();
-                data.put("questionId", Integer.toString(questionId));
-                data.put("name",name);
-                data.put("email",email);
-                data.put("comments",comments);
+                URL url = new URL(urlPath);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                conn.setRequestProperty("Accept","application/json");
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
 
-                HttpRequest.post(url).form(data).created();
+                JSONObject jsonParam = new JSONObject();
+                jsonParam.put("id", Integer.toString(questionId));
+                jsonParam.put("creator",name);
+                jsonParam.put("email",email);
+                jsonParam.put("feedback",comments);
 
+                Log.i("JSON", jsonParam.toString());
+                DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                os.writeBytes(jsonParam.toString());
+                os.flush();
+                os.close();
+
+                Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                Log.i("MSG" , conn.getResponseMessage());
+
+                conn.disconnect();
                 return null;
             } catch (Exception e) {
                 Log.e(getPackageName(), e.getMessage(), e);

@@ -76,20 +76,22 @@ public class QuestionDetailFragment extends Fragment {
         protected String[] doInBackground(String... params) {
             try {
 
-                String url = "http://" + Constants.SERVER +"/rest/answer/detail";
-
-                String search = getArguments().getString(Constants.ASK);
                 String id = getArguments().getString(Constants.ANSWER_ID);
 
-                HttpRequest request = HttpRequest.get(url, true, "search", search,"id",id);
+                String url = "http://" + Constants.SERVER +"/answer/" + id;
+
+                String search = getArguments().getString(Constants.ASK);
+
+
+                HttpRequest request = HttpRequest.get(url, true, "question", search);
 
                 String conteudo = request.body();
 
-                JSONObject jsonObject = new JSONObject(conteudo);
+                JSONObject questionObject = new JSONObject(conteudo);
 
                 String[] answer = new String[1];
 
-                JSONObject questionObject = (JSONObject)jsonObject.get("answer");
+                //JSONObject questionObject = (JSONObject)jsonObject.get("answer");
                 String number = questionObject.getString("number");
                 String question = questionObject.getString("question");
                 String content = questionObject.getString("content");
