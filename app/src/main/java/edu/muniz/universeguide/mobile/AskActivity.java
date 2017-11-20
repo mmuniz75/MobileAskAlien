@@ -4,14 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.github.kevinsawicki.http.HttpRequest;
+
+import org.json.JSONObject;
 
 
 /**
@@ -23,6 +29,7 @@ public class AskActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
 
         if(isNetworkAvailable()){
+            new SetServerTask().execute();
 			getSupportActionBar().setDisplayShowHomeEnabled(true);
 			getSupportActionBar().setLogo(R.drawable.ic_launcher);
 			getSupportActionBar().setDisplayUseLogoEnabled(true);
@@ -70,6 +77,22 @@ public class AskActivity extends AppCompatActivity  {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private class SetServerTask extends AsyncTask<String, Void, String[]> {
+        @Override
+        protected String[] doInBackground(String... params) {
+            try {
+                HttpRequest request = HttpRequest.get(Constants.SERVER_NAME, true);
+                String conteudo = request.body();
+                JSONObject questionObject = new JSONObject(conteudo);
+                String[] server = new String[1];
+                Constants.SERVER = questionObject.getString("server");
+            } catch (Exception e) {
+                Log.e(getPackageName(), e.getMessage(), e);
+            }
+            return null;
         }
     }
 
