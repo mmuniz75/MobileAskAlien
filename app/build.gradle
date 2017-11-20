@@ -9,7 +9,7 @@ android {
         targetSdkVersion 24
         versionName '1.8'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionCode 5
+        versionCode 6
     }
     buildTypes {
         release {
