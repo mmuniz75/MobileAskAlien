@@ -171,7 +171,7 @@ public class QuestionListActivity extends AppCompatActivity {
             try {
 
                 String ask = getIntent().getStringExtra(Constants.ASK);
-                String url = "http://" + Constants.SERVER +"/ask";
+                String url = Constants.SERVER +"/ask";
 
                 HttpRequest request = HttpRequest.get(url, true, "question", ask);
 

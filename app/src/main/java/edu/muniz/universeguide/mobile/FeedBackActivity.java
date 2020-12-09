@@ -82,7 +82,7 @@ public class FeedBackActivity extends AppCompatActivity {
         protected String[] doInBackground(String... params) {
             try {
 
-                String urlPath = "http://" + Constants.SERVER +"/feedback";
+                String urlPath = Constants.SERVER +"/feedback";
 
                 EditText editText = (EditText)findViewById(R.id.nameText);
                 String name = editText.getText().toString();

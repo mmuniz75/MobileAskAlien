@@ -91,6 +91,7 @@ public class AskActivity extends AppCompatActivity {
                 JSONObject questionObject = new JSONObject(conteudo);
                 String[] server = new String[1];
                 Constants.SERVER = questionObject.getString("server");
+                //Constants.SERVER = "http://192.168.43.222:9090";
             } catch (Exception e) {
                 Log.e(getPackageName(), e.getMessage(), e);
             }

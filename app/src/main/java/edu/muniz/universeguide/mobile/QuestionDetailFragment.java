@@ -79,7 +79,7 @@ public class QuestionDetailFragment extends Fragment {
 
                 String id = getArguments().getString(Constants.ANSWER_ID);
 
-                String url = "http://" + Constants.SERVER +"/answer/" + id;
+                String url = Constants.SERVER +"/answer/" + id;
 
                 String search = getArguments().getString(Constants.ASK);
 
