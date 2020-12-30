@@ -3,9 +3,7 @@ package edu.muniz.universeguide.mobile;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.github.kevinsawicki.http.HttpRequest;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import org.json.JSONObject;
 
@@ -78,7 +79,7 @@ public class QuestionDetailFragment extends Fragment {
 
                 String id = getArguments().getString(Constants.ANSWER_ID);
 
-                String url = "http://" + Constants.SERVER +"/answer/" + id;
+                String url = Constants.SERVER +"/answer/" + id;
 
                 String search = getArguments().getString(Constants.ASK);
 
@@ -92,7 +93,7 @@ public class QuestionDetailFragment extends Fragment {
                 String[] answer = new String[1];
 
                 //JSONObject questionObject = (JSONObject)jsonObject.get("answer");
-                String number = questionObject.getString("number");
+                String number = questionObject.getString("id");
                 String question = questionObject.getString("question");
                 String content = questionObject.getString("content");
                 String date = questionObject.getString("date");
