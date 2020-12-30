@@ -93,7 +93,7 @@ public class QuestionDetailFragment extends Fragment {
                 String[] answer = new String[1];
 
                 //JSONObject questionObject = (JSONObject)jsonObject.get("answer");
-                String number = questionObject.getString("number");
+                String number = questionObject.getString("id");
                 String question = questionObject.getString("question");
                 String content = questionObject.getString("content");
                 String date = questionObject.getString("date");
